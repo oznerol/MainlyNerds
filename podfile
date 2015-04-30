@@ -1,0 +1,8 @@
+platform :ios, '8.0'
+pod 'MWFeedParser'
+pod "AFNetworking", "~> 2.0"
+pod 'SDWebImage', '~>3.7'
+pod 'CHTCollectionViewWaterfallLayout', :git => 'https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git', :branch => 'develop'
+pod 'DateTools'
+pod 'AAShareBubbles'
+workspace 'MainlyNerds'
