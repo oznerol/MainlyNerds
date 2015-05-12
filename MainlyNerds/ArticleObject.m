@@ -36,6 +36,20 @@
         _postExcerpt = [[post objectForKey:@"excerpt"] stringByConvertingHTMLToPlainText];
         _postCategories = [post objectForKey:@"categories"];
         
+        NSArray *videoArray = [[post objectForKey:@"custom_fields"] objectForKey:@"ct_mb_post_video_file"];
+        NSArray *videoTypeArray = [[post objectForKey:@"custom_fields"] objectForKey:@"ct_mb_post_video_type"];
+
+        // if a video post from youtube, this will be populated, otherwise it's left blank
+        if(videoArray && [[videoTypeArray firstObject] isEqualToString:@"youtube"])
+            _postVideoCode = [videoArray firstObject];
+        else
+            _postVideoCode = nil;
+        
+        NSArray *viewCount = [[post objectForKey:@"custom_fields"] objectForKey:@"post_views_count"];
+        if(viewCount)
+        {
+            _postViewCount = [[videoArray firstObject] intValue];
+        }
         //tags = array of dicts
         //comment_status - string open/closed
         //type - string post/?

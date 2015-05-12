@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eqM-eZ-luF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eqM-eZ-luF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -44,10 +44,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="349"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="nvC-dK-326">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="nvC-dK-326">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="349"/>
                                                 </imageView>
-                                                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8h-Bq-KDy" userLabel="Coloring">
+                                                <view alpha="0.40000000000000002" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="L8h-Bq-KDy" userLabel="Coloring">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="349"/>
                                                     <color key="backgroundColor" red="0.016954771770447241" green="0.75740840693611855" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -57,7 +57,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                     <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="shadowOffset" width="1" height="-1"/>
+                                                    <size key="shadowOffset" width="1" height="2"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4Hf-i3-r6y">
                                                     <rect key="frame" x="18" y="318" width="564" height="17"/>
@@ -66,10 +66,12 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-J8-tIH">
-                                                    <rect key="frame" x="249" y="156" width="103" height="37"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-J8-tIH">
+                                                    <rect key="frame" x="239" y="157" width="123" height="35"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="0.65000000000000002" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                                    <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                                    <size key="titleShadowOffset" width="1" height="1"/>
                                                     <state key="normal" title="Load More..."/>
                                                     <connections>
                                                         <action selector="loadMore:" destination="pce-pb-0F1" eventType="touchUpInside" id="Vws-g8-yfG"/>
@@ -184,21 +186,21 @@
                                 <action selector="toggleMenu:" destination="qhX-Fj-ElX" id="bsh-gp-rBA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Close" id="xSE-hz-wjI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="xSE-hz-wjI">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="goBack" destination="qhX-Fj-ElX" id="bMp-gw-PpO"/>
+                                <action selector="shareArticle:" destination="qhX-Fj-ElX" id="Nmd-nS-weN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="articleCollectionView" destination="E6q-Zs-5kq" id="7DV-Sa-coJ"/>
-                        <outlet property="closeButton" destination="xSE-hz-wjI" id="ImH-pX-CqU"/>
                         <outlet property="grayView" destination="c3g-F4-3AL" id="eHV-Fj-zan"/>
                         <outlet property="menuButton" destination="zb4-Rk-wc6" id="u3T-gC-dU8"/>
                         <outlet property="menuScrollView" destination="Kck-gW-TXA" id="108-3Y-Y2A"/>
                         <outlet property="menuView" destination="f6m-3H-z2z" id="CoU-hy-rNO"/>
                         <outlet property="navItem" destination="0rl-D3-KIa" id="6fh-6d-QR4"/>
+                        <outlet property="shareButton" destination="xSE-hz-wjI" id="CkA-qe-JSE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hLg-B2-NI4" userLabel="First Responder" sceneMemberID="firstResponder"/>

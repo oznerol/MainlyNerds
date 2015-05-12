@@ -24,11 +24,22 @@
 {
     [super viewDidLoad];
     
-    [self.navigationItem setRightBarButtonItem:nil animated:YES];
-    [self.navigationItem setLeftBarButtonItem:_menuButton animated:YES];
+    [self.navigationItem setRightBarButtonItem:nil animated:NO];
+    [self.navigationItem setLeftBarButtonItem:_menuButton animated:NO];
     
-    _closeButton.enabled = NO;
+    _closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
+    _closeButton.tintColor = [UIColor whiteColor];
+    
+    UIFont *font = [UIFont fontWithName:@"Avenir Book" size:17.0f];
+    [_menuButton setTitleTextAttributes:@{NSFontAttributeName: font}
+                               forState:UIControlStateNormal];
+    [_closeButton setTitleTextAttributes:@{NSFontAttributeName: font}
+                                forState:UIControlStateNormal];
+    
+    
+    _closeButton.enabled = YES;
     _menuButton.enabled = YES;
+    _shareButton.enabled = YES;
     
     articleArray = [NSMutableArray array];
     categoryArray = [NSMutableArray array];
@@ -56,17 +67,21 @@
     logoView.backgroundColor = [UIColor clearColor];
     self.navigationItem.titleView = logoView;
     
+    //[self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+    //                                              forBarMetrics:UIBarMetricsDefault];
+    //self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //[self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:.5f green:.5f blue:.5f alpha:.1f]];
+    //self.navigationController.navigationBar.translucent = YES;
+    //self.navigationController.view.backgroundColor = [UIColor clearColor];
+
+    
     currentPage = 0;
     currentArticleIndex = 0;
     maxArticles = 1;
     maxPages = 1;
     
     
-    UIFont *font = [UIFont fontWithName:@"Avenir Book" size:17.0f];
-    [_menuButton setTitleTextAttributes:@{NSFontAttributeName: font}
-                                     forState:UIControlStateNormal];
-    [_closeButton setTitleTextAttributes:@{NSFontAttributeName: font}
-                               forState:UIControlStateNormal];
+    
 
     [self reset];
     [self downloadMenuItems];
@@ -140,6 +155,21 @@
 
 #pragma mark Actions
 
+-(IBAction)shareArticle:(id)sender
+{
+    _shareBubbles = [[AAShareBubbles alloc] initCenteredInWindowWithRadius:160];
+    _shareBubbles.delegate = _myArticleView;
+    _shareBubbles.bubbleRadius = 45; // Default is 40
+    _shareBubbles.showFacebookBubble = YES;
+    _shareBubbles.showTwitterBubble = YES;
+    _shareBubbles.showMailBubble = YES;
+    _shareBubbles.showGooglePlusBubble = YES;
+    _shareBubbles.showTumblrBubble = NO;
+    _shareBubbles.showVkBubble = NO;
+    
+    [_shareBubbles show];
+}
+
 -(void)reset
 {
     articleArray = [NSMutableArray array];
@@ -176,8 +206,10 @@
 -(IBAction)goBack
 {
     [_collection setScrollEnabled:true];
-    _closeButton.enabled = NO;
-    _menuButton.enabled = YES;
+    [self.navigationItem setLeftBarButtonItem:nil animated:NO];
+    [self.navigationItem setRightBarButtonItem:nil animated:NO];
+    //_closeButton.enabled = NO;
+    //_menuButton.enabled = YES;
     
     [UIView animateWithDuration:0.5
             delay:0
@@ -420,6 +452,10 @@
     
     NSMutableArray *arr1 = [NSMutableArray arrayWithArray:[_menuDict objectForKey:@"categories"]];
     
+    
+    float fontSize = 15.0f;
+    float subFontSize = 12.0f;
+    
     float xOffset = 20;
     float yOffset = 40;
     float buttonHeight = 40.0f;
@@ -428,12 +464,12 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     
     yOffset += buttonHeight;
-    [button setTitle:@"Home" forState:UIControlStateNormal];
+    [button setTitle:@" Home " forState:UIControlStateNormal];
     button.frame = CGRectMake(xOffset, yOffset, buttonWidth, buttonHeight);
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(reset) forControlEvents:UIControlEventTouchUpInside];
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    button.titleLabel.font = [UIFont fontWithName:@"Avenir Book" size:20.0f];
+    button.titleLabel.font = [UIFont fontWithName:@"Avenir Book" size:fontSize];
     button.titleLabel.lineBreakMode = NSLineBreakByClipping;
     button.titleLabel.adjustsFontSizeToFitWidth = YES;
     button.titleLabel.numberOfLines = 1;
@@ -480,11 +516,11 @@
     {
         CategoryButton *button = [CategoryButton buttonWithType:UIButtonTypeSystem];
         button.buttonCat = cat;
-        [button setTitle:cat.catTitle forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@" %@ ", cat.catTitle] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         
-        button.titleLabel.font = [UIFont fontWithName:@"Avenir Book" size:20.0f];
+        button.titleLabel.font = [UIFont fontWithName:@"Avenir Book" size:fontSize];
         button.titleLabel.lineBreakMode = NSLineBreakByClipping;
         button.titleLabel.adjustsFontSizeToFitWidth = YES;
         button.titleLabel.numberOfLines = 1;
@@ -505,11 +541,11 @@
             CategoryButton *childButton = [CategoryButton buttonWithType:UIButtonTypeSystem];
             childButton.buttonCat = child;
             
-            [childButton setTitle:[NSString stringWithFormat:@"- %@", child.catTitle] forState:UIControlStateNormal];
+            [childButton setTitle:[NSString stringWithFormat:@" - %@ ", child.catTitle] forState:UIControlStateNormal];
             [childButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             childButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 
-            childButton.titleLabel.font = [UIFont fontWithName:@"Avenir Book" size:20.0f];
+            childButton.titleLabel.font = [UIFont fontWithName:@"Avenir Book" size:subFontSize];
             childButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
             childButton.titleLabel.adjustsFontSizeToFitWidth = YES;
             childButton.titleLabel.numberOfLines = 1;
@@ -694,7 +730,28 @@
         [_collection setScrollEnabled:false];
         
         //_myArticleView = [ArticleView initWithFrame:_myArticleCell.origRect];
-        _myArticleView = [ArticleView initWithFrame:_myArticleCell.origRect andArticle:_feedItem andImage:_feedItemImageView.image];
+        
+        CGRect rect= collectionView.frame;
+        rect.origin = CGPointMake(rect.origin.x,
+                                  rect.origin.y +
+                                  collectionView.contentOffset.y //+
+                                  //self.navigationController.navigationBar.frame.size.height
+                                  );
+        rect.size = CGSizeMake(rect.size.width,
+                               rect.size.height //-
+                               //self.navigationController.navigationBar.frame.size.height
+                               );
+        //float xOffset = 10.0f;
+        //float offset = self.navigationController.navigationBar.frame.size.height + 10;
+        //NSLog(@"offset: %f", collectionView.contentOffset.y);
+        
+        // scale the rect to not fill the whole screen
+        rect = CGRectInset(rect,
+                           0,
+                           0);
+        
+        
+        _myArticleView = [ArticleView initWithFrame:rect andArticle:_feedItem andImage:_feedItemImageView.image];
         
         NSString *prevTitle = nil;
         NSString *nextTitle = nil;
@@ -718,30 +775,17 @@
         
         //_grayView.hidden = false;
         
-        _closeButton.enabled = YES;
-        _menuButton.enabled = NO;
+        //_closeButton.enabled = YES;
+        //_menuButton.enabled = NO;
+        [self.navigationItem setLeftBarButtonItem:nil animated:NO];
         
-        [UIView animateWithDuration:0.5
+        
+        [UIView animateWithDuration:0.5f
                 delay:0
                 options:UIViewAnimationOptionAllowAnimatedContent//(UIViewAnimationOptionAllowUserInteraction)
                  animations:^
                  {
-                     CGRect rect= collectionView.frame;
-                     rect.origin = CGPointMake(rect.origin.x,
-                                               rect.origin.y +
-                                               collectionView.contentOffset.y +
-                                               self.navigationController.navigationBar.frame.size.height
-                                               );
-                     rect.size = CGSizeMake(rect.size.width,
-                                            rect.size.height -
-                                            self.navigationController.navigationBar.frame.size.height);
-                     //float xOffset = 10.0f;
-                     //float offset = self.navigationController.navigationBar.frame.size.height + 10;
-                     //NSLog(@"offset: %f", collectionView.contentOffset.y);
                      
-                     rect = CGRectInset(rect,
-                                        0,
-                                        0);
                      
                      _myArticleCell.frame = rect;
                      _myArticleView.frame = CGRectMake(0,
@@ -755,7 +799,7 @@
                                         options:UIViewAnimationOptionTransitionFlipFromRight
                                      completion:^(BOOL finished) {
                                          [self.navigationItem setLeftBarButtonItem:_closeButton animated:YES];
-                                         
+                                         [self.navigationItem setRightBarButtonItem:_shareButton animated:YES];
                                          //NSLog(@"animation end");
                                      }];
                  }

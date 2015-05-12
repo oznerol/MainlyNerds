@@ -46,10 +46,17 @@
 @property (nonatomic, strong) IBOutlet UIButton *prevButton;
 @property (nonatomic, strong) IBOutlet UIButton *nextButton;
 
+@property (nonatomic, strong) IBOutlet UIView *mainView;
+@property (nonatomic, strong) IBOutlet UIView *navbarView;
+
 @property (nonatomic, weak) id<ArticleViewDelegate> delegate;
 
 @property (nonatomic, strong) AAShareBubbles *shareBubbles;
 @property (nonatomic, strong) IBOutlet UIButton *shareButton;
+
+@property (nonatomic, strong) IBOutlet UIView *frameView;
+
+@property (nonatomic) CGRect toFrame;
 
 -(IBAction)closeArticle:(id)sender;
 -(void)loadNavigation:(NSString*)prevTitle nextTitle:(NSString*)nextTitle;

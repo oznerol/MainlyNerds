@@ -17,6 +17,7 @@
 #import <MWFeedParser/NSString+HTML.h>
 #import "CategoryObject.h"
 #import "CategoryButton.h"
+#import "AAShareBubbles.h"
 
 #define RANDFLOAT(smallNumber, bigNumber) ((((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * (bigNumber - smallNumber)) + smallNumber)
 
@@ -55,6 +56,10 @@
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *closeButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *menuButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem *shareButton;
+
+@property (nonatomic, strong) AAShareBubbles *shareBubbles;
+
 @property (nonatomic, strong) IBOutlet UINavigationItem *navItem;
 
 @end

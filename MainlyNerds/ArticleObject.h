@@ -21,9 +21,11 @@
 @property (nonatomic, strong) NSString *postURL;
 @property (nonatomic, strong) NSString *postAuthor;
 @property (nonatomic) int postCommentCount;
+@property (nonatomic) int postViewCount;
 @property (nonatomic, strong) NSDate *postDate;
 @property (nonatomic, strong) NSString *postImage;
 @property (nonatomic, strong) NSString *postExcerpt;
+@property (nonatomic, strong) NSString *postVideoCode;
 @property (nonatomic, strong) NSArray *postCategories;
 
 +(id)initWithArticle:(id)post;
