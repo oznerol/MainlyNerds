@@ -1,0 +1,66 @@
+PODS:
+  - AAShareBubbles (1.1.0)
+  - AFNetworking (2.5.2):
+    - AFNetworking/NSURLConnection (= 2.5.2)
+    - AFNetworking/NSURLSession (= 2.5.2)
+    - AFNetworking/Reachability (= 2.5.2)
+    - AFNetworking/Security (= 2.5.2)
+    - AFNetworking/Serialization (= 2.5.2)
+    - AFNetworking/UIKit (= 2.5.2)
+  - AFNetworking/NSURLConnection (2.5.2):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.2):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.2)
+  - AFNetworking/Security (2.5.2)
+  - AFNetworking/Serialization (2.5.2)
+  - AFNetworking/UIKit (2.5.2):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - CHTCollectionViewWaterfallLayout (0.8)
+  - DateTools (1.5.0)
+  - MWFeedParser (1.0.1):
+    - MWFeedParser/FeedParser (= 1.0.1)
+    - MWFeedParser/NSDate+InternetDateTime (= 1.0.1)
+    - MWFeedParser/NSString+HTML (= 1.0.1)
+  - MWFeedParser/FeedParser (1.0.1):
+    - MWFeedParser/NSDate+InternetDateTime
+    - MWFeedParser/NSString+HTML
+  - MWFeedParser/NSDate+InternetDateTime (1.0.1)
+  - MWFeedParser/NSString+HTML (1.0.1)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
+
+DEPENDENCIES:
+  - AAShareBubbles
+  - AFNetworking (~> 2.0)
+  - CHTCollectionViewWaterfallLayout (from `https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git`,
+    branch `develop`)
+  - DateTools
+  - MWFeedParser
+  - SDWebImage (~> 3.7)
+
+EXTERNAL SOURCES:
+  CHTCollectionViewWaterfallLayout:
+    :branch: develop
+    :git: https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git
+
+CHECKOUT OPTIONS:
+  CHTCollectionViewWaterfallLayout:
+    :commit: 809c87b4ff30db425a7b8477908a7909c7f331fa
+    :git: https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git
+
+SPEC CHECKSUMS:
+  AAShareBubbles: 960610d6a3c4da57d7cd295f4bec68790307bce8
+  AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
+  CHTCollectionViewWaterfallLayout: 058823cc65c9d84e059b0a85eede517550da0334
+  DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
+  MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+
+COCOAPODS: 0.36.3
